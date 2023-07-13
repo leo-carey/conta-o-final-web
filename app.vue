@@ -8,8 +8,8 @@
 const colorMode = useColorMode()
 </script>
 
-<style lang="postcss">
+<style lang="css">
 body {
-  @apply min-h-screen bg-white dark:bg-gray-800 dark:text-gray-200;
+  @apply min-h-screen bg-[#f5f1d4] dark:bg-gray-800 dark:text-gray-200;
 }
 </style>

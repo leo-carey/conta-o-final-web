@@ -6,11 +6,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: false },
 
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@element-plus/nuxt'
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@element-plus/nuxt'],
 
   colorMode: {
     classSuffix: ''
@@ -26,5 +22,9 @@ export default defineNuxtConfig({
         features: { 'nesting-rules': false }
       }
     }
+  },
+
+  runtimeConfig: {
+    API_BASE_URL: process.env.API_BASE_URL
   }
 })
