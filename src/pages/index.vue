@@ -9,8 +9,8 @@ import ComponentCustom from '@/components/ComponentCustom.vue'
 
 export default {
   components: {
-    ComponentCustom
-  }
+    ComponentCustom,
+  },
 }
 </script>
 

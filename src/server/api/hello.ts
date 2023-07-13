@@ -1,6 +1,6 @@
 const defineEventHandler = () => {
   return {
-    hello: 'world'
+    hello: 'world',
   }
 }
 
