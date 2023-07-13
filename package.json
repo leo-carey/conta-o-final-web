@@ -16,8 +16,8 @@
     "postinstall": "nuxt prepare",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint": "pnpm lint:js && pnpm lint:prettier",
-    "lintfix": "prettier --write --list-different . && pnpm lint:js --fix"
+    "lint": "npm run lint:js && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js --fix"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.5",
@@ -26,6 +26,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^20",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.44.0",
