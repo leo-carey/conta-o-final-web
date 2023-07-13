@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import ComponentCustom from "@/components/ComponentCustom.vue";
+import ComponentCustom from '@/components/ComponentCustom.vue'
 
 export default {
   components: {
-    ComponentCustom,
-  },
-};
+    ComponentCustom
+  }
+}
 </script>
 
 <style lang="css">

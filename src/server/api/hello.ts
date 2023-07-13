@@ -1,7 +1,7 @@
 const defineEventHandler = () => {
   return {
-    hello: "world",
-  };
-};
+    hello: 'world'
+  }
+}
 
-export default defineEventHandler;
+export default defineEventHandler

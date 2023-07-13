@@ -1,22 +1,22 @@
-import { defineNuxtConfig } from "nuxt/config";
+import { defineNuxtConfig } from 'nuxt/config'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  srcDir: "src/",
+  srcDir: 'src/',
 
   devtools: { enabled: true },
 
-  modules: ["@nuxtjs/tailwindcss", "@element-plus/nuxt"],
+  modules: ['@nuxtjs/tailwindcss', '@element-plus/nuxt'],
 
   postcss: {
     plugins: {
-      "postcss-import": {},
-      "tailwindcss/nesting": "postcss-nesting",
+      'postcss-import': {},
+      'tailwindcss/nesting': 'postcss-nesting',
       tailwindcss: {},
       autoprefixer: {},
-      "postcss-preset-env": {
-        features: { "nesting-rules": false },
-      },
-    },
-  },
-});
+      'postcss-preset-env': {
+        features: { 'nesting-rules': false }
+      }
+    }
+  }
+})
