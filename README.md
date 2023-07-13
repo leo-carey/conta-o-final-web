@@ -13,11 +13,11 @@
 
 <br>
 
-## :dart: About ##
+## :dart: About
 
 Site pra quem não tem tempo e nem saco de assistir Netflix e quer saber o final dos filmes.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting
 
 Made with :heart: by Leonardo Carey
 
