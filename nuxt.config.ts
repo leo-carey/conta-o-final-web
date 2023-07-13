@@ -6,10 +6,22 @@ export default defineNuxtConfig({
 
   devtools: { enabled: false },
 
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@element-plus/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@element-plus/nuxt',
+    '@nuxtjs/google-fonts'
+  ],
 
   colorMode: {
     classSuffix: ''
+  },
+
+  googleFonts: {
+    preconnect: true,
+    families: {
+      Poppins: [200, 300, 400, 500, 600, 800, 900]
+    }
   },
 
   postcss: {

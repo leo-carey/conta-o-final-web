@@ -3,7 +3,11 @@ import type { Config } from 'tailwindcss'
 // Default are on https://tailwindcss.nuxtjs.org/tailwind/config#default-configuration
 export default <Partial<Config>>{
   darkMode: 'class',
-  theme: {},
+  theme: {
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif']
+    }
+  },
   plugins: [require('@tailwindcss/typography')],
-  content: ['./src/**/*.{html,ts,scss,css}'],
+  content: ['./src/**/*.{html,ts,scss,css}']
 }
