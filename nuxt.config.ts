@@ -6,7 +6,15 @@ export default defineNuxtConfig({
 
   devtools: { enabled: false },
 
-  modules: ['@nuxtjs/tailwindcss', '@element-plus/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@element-plus/nuxt'
+  ],
+
+  colorMode: {
+    classSuffix: ''
+  },
 
   postcss: {
     plugins: {

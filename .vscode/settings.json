@@ -6,7 +6,7 @@
     "editor.defaultFormatter": "Vue.volar"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
