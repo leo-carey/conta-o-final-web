@@ -74,27 +74,34 @@
       class="!bg-[#cc6c4a] hover:!bg-[#b35f40] !text-white"
     />
 
-    <el-dialog v-model="showSpoiler" class="dialog-spoiler">
-      <template #header="{ close, titleId }">
-        <div class="header-spoiler">
-          <h4
-            :id="titleId"
-            class="text-xl text-slate-300 uppercase font-semibold"
-          >
-            Aqui está o resumo do seu spoiler!
-          </h4>
+    <client-only>
+      <el-dialog
+        v-model="showSpoiler"
+        :show-close="false"
+        class="dialog-spoiler"
+        append-to-body
+      >
+        <template #header="{ close, titleId }">
+          <div class="header-spoiler">
+            <h4
+              :id="titleId"
+              class="text-xl text-slate-300 uppercase font-semibold"
+            >
+              Aqui está o resumo do seu spoiler!
+            </h4>
 
-          <el-button type="primary" style="color: #cbd5e1" @click="close">
-            <el-icon class="el-icon--left" style="color: #cbd5e1"
-              ><CircleCloseFilled
-            /></el-icon>
-            Fechar
-          </el-button>
-        </div>
-      </template>
+            <el-button type="primary" style="color: #cbd5e1" @click="close">
+              <el-icon class="el-icon--left" style="color: #cbd5e1"
+                ><CircleCloseFilled
+              /></el-icon>
+              Fechar
+            </el-button>
+          </div>
+        </template>
 
-      <p class="text-slate-300 text-lg">{{ spoiler }}</p>
-    </el-dialog>
+        <p class="text-slate-300 text-lg">{{ spoiler }}</p>
+      </el-dialog>
+    </client-only>
   </section>
 </template>
 
@@ -266,8 +273,8 @@ export default {
     padding-top: 140px;
   }
 
-  :root {
-    --el-dialog-width: 100%;
+  .dialog-spoiler {
+    @apply w-[80%];
   }
 }
 </style>
