@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-switch
-      v-model="$colorMode.preference"
+      v-model="colorMode.preference"
       active-value="light"
       inactive-value="dark"
       class="mt-2"
@@ -20,4 +20,6 @@
 
 <script setup lang="ts">
 import { Moon, Sunny } from '@element-plus/icons-vue'
+
+const colorMode = useColorMode()
 </script>

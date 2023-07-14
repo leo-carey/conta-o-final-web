@@ -1,37 +1,48 @@
 <template>
-  <div v-if="movies.length !== 0" class="mt-5">
+  <div class="mt-5 pb-10">
     <div
+      v-if="movies.length !== 0"
       class="text-sm font-semibold tracking-wide uppercase text-center mb-10"
     >
       <h2>Selecione o filme que você está procurando:</h2>
     </div>
 
-    <el-skeleton style="width: 240px" :loading="loading" animated>
+    <el-skeleton style="width: 100%" :loading="loading" animated>
       <template #template>
-        <el-skeleton-item variant="image" style="width: 240px; height: 240px" />
-        <div style="padding: 14px">
-          <el-skeleton-item variant="h3" style="width: 50%" />
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-items: space-between;
-              margin-top: 16px;
-              height: 16px;
-            "
-          >
-            <el-skeleton-item variant="text" style="margin-right: 16px" />
-            <el-skeleton-item variant="text" style="width: 30%" />
+        <div class="grid grid-cols-4 gap-6">
+          <div v-for="(_items, itemIndex) in 4" :key="itemIndex">
+            <el-skeleton-item
+              variant="image"
+              style="width: 230px; height: 250px"
+            />
+
+            <div style="padding: 14px">
+              <el-skeleton-item variant="h3" style="width: 50%" />
+
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-items: space-between;
+                  margin-top: 16px;
+                  height: 16px;
+                "
+              >
+                <el-skeleton-item variant="text" style="margin-right: 16px" />
+                <el-skeleton-item variant="text" style="width: 30%" />
+              </div>
+            </div>
           </div>
         </div>
       </template>
 
       <template #default>
-        <div class="grid grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div
             v-for="(movie, movieKey) in movies"
             :key="movieKey"
             class="card-wrapper relative cursor-pointer"
+            @click="$emit('selectMovieAndGetSpoiler', movie)"
           >
             <div
               class="arrow-this block absolute -top-4 -left-4 opacity-0 transition-opacity delay-100 ease-linear z-[90]"
@@ -42,15 +53,24 @@
               />
             </div>
 
-            <el-card :body-style="{ padding: '0px', overflow: 'hidden' }">
-              <div class="image-banner">
-                <img :src="movie.poster" class="w-full block" />
+            <el-card
+              :body-style="{
+                padding: '0px',
+                overflow: 'hidden',
+                borderColor: '#000000da'
+              }"
+            >
+              <div
+                class="p-0 pt-2 w-full absolute top-0 left-0 bg-[#00000093] rounded-t-[4px]"
+              >
+                <span
+                  class="block text-xs text-slate-200 text-center font-medium mb-2"
+                  >{{ movie.title }}</span
+                >
               </div>
 
-              <div class="p-3 pb-2">
-                <span class="block text-sm font-medium mb-2">{{
-                  movie.title
-                }}</span>
+              <div class="image-banner">
+                <img :src="movie.poster" class="w-full block" />
               </div>
             </el-card>
           </div>
@@ -61,7 +81,7 @@
 </template>
 
 <script lang="ts">
-import { ItemResponseWhatsMovie } from 'interfaces/ResponseWhatsMovie'
+import { ItemResponseWhatsMovie } from '@/interfaces/ResponseWhatsMovie'
 
 export default {
   props: {
@@ -73,11 +93,12 @@ export default {
       type: Boolean,
       default: false
     }
-  }
+  },
+  emits: ['selectMovieAndGetSpoiler']
 }
 </script>
 
-<style scoped>
+<style lang="css">
 .card-wrapper:hover .arrow-this {
   @apply opacity-100;
 }
@@ -89,5 +110,10 @@ export default {
 
 .card-wrapper:hover .image-banner:after {
   @apply opacity-40;
+}
+
+:root {
+  --el-border-color-light: #222;
+  --el-card-bg-color: #222;
 }
 </style>
