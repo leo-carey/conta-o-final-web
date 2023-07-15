@@ -80,6 +80,7 @@
         :show-close="false"
         class="dialog-spoiler"
         append-to-body
+        @closed="stopSpoiler"
       >
         <template #header="{ close, titleId }">
           <div class="header-spoiler">
@@ -90,12 +91,36 @@
               {{ $t('spoiler_title') }}
             </h4>
 
-            <el-button type="primary" style="color: #cbd5e1" @click="close">
-              <el-icon class="el-icon--left" style="color: #cbd5e1"
-                ><CircleCloseFilled
-              /></el-icon>
-              {{ $t('spoiler_close_button') }}
-            </el-button>
+            <div>
+              <el-button
+                type="info"
+                style="color: #1e293b"
+                @click="reloadSpoiler(selectedMovie)"
+              >
+                <el-icon class="el-icon--left" style="color: #1e293b"
+                  ><RefreshRight
+                /></el-icon>
+                {{ $t('spoiler_more_options') }}
+              </el-button>
+
+              <el-button
+                type="success"
+                style="color: #1e293b"
+                @click="hearSpoiler"
+              >
+                <el-icon class="el-icon--left" style="color: #1e293b"
+                  ><VideoPlay
+                /></el-icon>
+                {{ $t('spoiler_hear_button') }}
+              </el-button>
+
+              <el-button type="primary" style="color: #cbd5e1" @click="close">
+                <el-icon class="el-icon--left" style="color: #cbd5e1"
+                  ><CircleCloseFilled
+                /></el-icon>
+                {{ $t('spoiler_close_button') }}
+              </el-button>
+            </div>
           </div>
         </template>
 
@@ -106,25 +131,45 @@
 </template>
 
 <script lang="ts">
-import { Search, CircleCloseFilled } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
+import {
+  Search,
+  CircleCloseFilled,
+  VideoPlay,
+  RefreshRight
+} from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
 
 import { ItemResponseWhatsMovie } from '@/interfaces/ResponseWhatsMovie'
 import CardsMoviesComponents from '@/components/base/CardsMoviesComponents.vue'
 
-import ApiService from '@/services/api'
+import { ApiService, SpeechService } from '@/services'
 
 export default {
   components: {
     CardsMoviesComponents,
-    CircleCloseFilled
+    CircleCloseFilled,
+    VideoPlay,
+    RefreshRight
   },
   setup() {
+    const { locale } = useI18n()
     const runtimeConfig = useRuntimeConfig()
     const apiUrl = runtimeConfig.public.API_BASE_URL as string
 
+    const selectedMovie: ItemResponseWhatsMovie = {
+      id: 0,
+      title: '',
+      description: '',
+      poster: '',
+      poster2: ''
+    }
+
     return {
       Search,
-      apiUrl
+      apiUrl,
+      locale,
+      selectedMovie
     }
   },
   data() {
@@ -145,6 +190,7 @@ export default {
   },
   mounted() {
     this.loading = false
+    window.speechSynthesis.getVoices()
   },
   methods: {
     async searchMovies() {
@@ -156,7 +202,7 @@ export default {
       try {
         const { data } = await ApiService.searchMovie(
           this.apiUrl,
-          'pt-BR',
+          this.locale,
           this.searchText
         )
 
@@ -176,11 +222,12 @@ export default {
 
     async selectMovieAndGetSpoiler(movie: ItemResponseWhatsMovie) {
       this.loading = true
+      this.selectedMovie = movie
 
       try {
         const { data } = await ApiService.getSpoiler(
           this.apiUrl,
-          'pt-BR',
+          this.locale,
           movie
         )
 
@@ -199,6 +246,29 @@ export default {
       }
 
       this.loading = false
+    },
+
+    async reloadSpoiler(movie: ItemResponseWhatsMovie) {
+      this.spoiler = ''
+      await this.selectMovieAndGetSpoiler(movie)
+    },
+
+    async hearSpoiler() {
+      try {
+        await SpeechService.talk(this.locale, this.spoiler)
+      } catch (error: any) {
+        console.error('Houve algum erro: ', error)
+
+        ElMessage({
+          showClose: true,
+          message: error,
+          type: 'error'
+        })
+      }
+    },
+
+    stopSpoiler() {
+      SpeechService.stopTalk()
     }
   }
 }

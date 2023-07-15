@@ -15,5 +15,9 @@ export default {
 
   // SPOILER
   spoiler_title: 'Here is your spoiler summary!',
-  spoiler_close_button: 'Close'
+  spoiler_close_button: 'Close',
+  spoiler_hear_button: 'Hear the end',
+  spoiler_speech_error:
+    'Unfortunately, your browser version does not allow this action.',
+  spoiler_more_options: 'See more about the spoiler'
 }
