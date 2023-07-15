@@ -4,7 +4,7 @@
       v-if="movies.length !== 0"
       class="text-sm font-semibold tracking-wide uppercase text-center mb-10"
     >
-      <h2>Selecione o filme que você está procurando:</h2>
+      <h2>{{ $t('cards_title') }}</h2>
     </div>
 
     <el-skeleton style="width: 100%" :loading="loading" animated>

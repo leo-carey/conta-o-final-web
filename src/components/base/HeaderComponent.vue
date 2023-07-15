@@ -4,7 +4,7 @@
       <div v-if="!loading" class="w-full flex items-center justify-between">
         <div>
           <p class="text-left text-sm mb-2 mt-2 w-[250px] w-auto">
-            Site pra quem não tem tempo de assistir Netflix.
+            {{ $t('header_left') }}
           </p>
 
           <div class="text-xs">
@@ -25,7 +25,7 @@
               </el-icon>
             </span>
 
-            <span>desenvolvido por</span>
+            <span>{{ $t('header_developed') }}</span>
 
             <a
               class="underline hover:no-underline"

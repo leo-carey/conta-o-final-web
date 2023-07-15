@@ -20,14 +20,14 @@
 
         <div class="w-full md:w-[580px] mx-auto">
           <p class="mb-3 ml-1 font-normal text-left text-sm md:text-base">
-            Qual o nome do filme que você quer saber o final?
+            {{ $t('form_label') }}
           </p>
 
           <el-form @submit="searchMovies" @submit.prevent>
             <div class="w-full flex items-center justify-between">
               <el-input
                 v-model="searchText"
-                placeholder="Ex: capitão américa soldado invernal"
+                :placeholder="`Ex: ${$t('form_placeholder')}`"
                 style="
                   --el-input-focus-border-color: #cc6c4a;
                   --el-input-border-radius: 6px;
@@ -87,14 +87,14 @@
               :id="titleId"
               class="text-xl text-slate-300 uppercase font-semibold"
             >
-              Aqui está o resumo do seu spoiler!
+              {{ $t('spoiler_title') }}
             </h4>
 
             <el-button type="primary" style="color: #cbd5e1" @click="close">
               <el-icon class="el-icon--left" style="color: #cbd5e1"
                 ><CircleCloseFilled
               /></el-icon>
-              Fechar
+              {{ $t('spoiler_close_button') }}
             </el-button>
           </div>
         </template>

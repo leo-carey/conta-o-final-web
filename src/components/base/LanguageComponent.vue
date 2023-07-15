@@ -52,13 +52,16 @@
 
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="pt-BR" :disabled="true">
+          <el-dropdown-item
+            command="pt_BR"
+            :disabled="$i18n.locale === 'pt_BR'"
+          >
             <img src="~/public/img/flag-pt-BR.png" alt="pt-BR" class="mr-2" />
             Português(Brasil)
           </el-dropdown-item>
 
-          <el-dropdown-item command="en" :disabled="false">
-            <img src="~/public/img/flag-en.png" alt="en" class="mr-2" /> Inglês
+          <el-dropdown-item command="en" :disabled="$i18n.locale === 'en'">
+            <img src="~/public/img/flag-en.png" alt="en" class="mr-2" /> English
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -66,13 +69,15 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  methods: {
-    handleDropdown(language: string) {
-      console.log('Mudado o idioma ===> ', language)
-    }
-  }
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+
+const cookieLang = useCookie('lang')
+
+const handleDropdown = (language: string) => {
+  locale.value = language
+  cookieLang.value = language
 }
 </script>
 

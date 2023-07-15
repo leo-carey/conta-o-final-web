@@ -1,21 +1,29 @@
 <template>
-  <div
-    class="min-h-screen text-[#6F5643] bg-[#ECE7C2] dark:text-slate-300 dark:bg-gray-800 top-0"
-  >
-    <HeaderComponent />
+  <Html>
+    <Head>
+      <Title>{{ title }}</Title>
+      <!-- <template v-for="meta in head.meta" :key="meta.id">
+        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+      </template> -->
+    </Head>
+    <Body>
+      <div
+        class="min-h-screen text-[#6F5643] bg-[#ECE7C2] dark:text-slate-300 dark:bg-gray-800 top-0"
+      >
+        <HeaderComponent />
 
-    <slot />
-  </div>
+        <slot />
+      </div>
+    </Body>
+  </Html>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import HeaderComponent from '@/components/base/HeaderComponent.vue'
 
-export default {
-  components: {
-    HeaderComponent
-  }
-}
+const { t } = useI18n()
+const title = computed(() => t('layouts_title'))
 </script>
 
 <style lang="css">
