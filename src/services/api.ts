@@ -4,7 +4,10 @@ import { ItemResponseWhatsMovie } from 'interfaces/ResponseWhatsMovie'
 
 class ApiService {
   static searchMovie(apiUrl: string, language: string, searchText: string) {
-    const uri = `${apiUrl}/whats-movie/${language}/${searchText}`
+    const uri = `${apiUrl}/whats-movie/${language.replace(
+      '_',
+      '-'
+    )}/${searchText}`
     return axios.get(uri)
   }
 
@@ -13,7 +16,7 @@ class ApiService {
     language: string,
     movie: ItemResponseWhatsMovie
   ) {
-    const uri = `${apiUrl}/spoiler/${language}/${movie.title}`
+    const uri = `${apiUrl}/spoiler/${language.replace('_', '-')}/${movie.title}`
     return axios.post(uri, movie)
   }
 }
