@@ -1,16 +1,14 @@
 class SpeechService {
-  static async talk(language: string, text: string) {
+  static talk(language: string, text: string) {
     if (SpeechService.checkSpeechOnBrowser()) {
       // Configure voice
       const speech = new SpeechSynthesisUtterance()
 
       // speech.voice = await _configVoice(language)
       speech.text = text
-      speech.lang = language.replace('_', '-')
+      speech.lang = 'pt-BR' // language.replace('_', '-')
       speech.pitch = 0.6
       speech.rate = 3
-
-      // console.log(language)
 
       SpeechService.stopTalk()
 
