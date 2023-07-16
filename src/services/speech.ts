@@ -1,5 +1,6 @@
 class SpeechService {
-  static talk(language: string, text: string) {
+  // language: string,
+  static talk(text: string) {
     if (SpeechService.checkSpeechOnBrowser()) {
       // Configure voice
       const speech = new SpeechSynthesisUtterance()
@@ -8,7 +9,7 @@ class SpeechService {
       speech.text = text
       speech.lang = 'pt-BR' // language.replace('_', '-')
       speech.pitch = 0.6
-      speech.rate = 3
+      speech.rate = 2
 
       SpeechService.stopTalk()
 

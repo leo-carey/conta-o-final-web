@@ -255,7 +255,7 @@ export default {
 
     async hearSpoiler() {
       try {
-        await SpeechService.talk(this.locale, this.spoiler)
+        await SpeechService.talk(this.spoiler) //, this.locale
       } catch (error: any) {
         console.error('Houve algum erro: ', error)
 
