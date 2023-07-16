@@ -29,9 +29,9 @@ class SpeechService {
   }
 }
 
-const _configVoice = async (language: string) => {
-  const voices = await window.speechSynthesis.getVoices()
-  return voices[16]
-}
+// const _configVoice = async (language: string) => {
+//   const voices = await window.speechSynthesis.getVoices()
+//   return voices[16]
+// }
 
 export default SpeechService
