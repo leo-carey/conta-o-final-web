@@ -7,65 +7,97 @@
     <div
       :class="`${
         moviesResult.items.length !== 0 ? 'content-loaded' : ''
-      } home-start w-full mx-auto flex items-center justify-center`"
+      } home-start w-full`"
     >
-      <div class="w-full px-10">
-        <div class="flex items-center justify-center mr-10 mb-14">
-          <img
-            class="w-[300px] md:w-[400px]"
-            src="~/public/img/conta-o-final-logo.png"
-            alt="pt-BR"
+      <div class="w-full flex items-center justify-between">
+        <aside class="hidden lg:w-1/4 lg:flex items-start justify-start">
+          <adsbygoogle
+            ad-slot="9738307227"
+            :ad-style="{
+              display: 'block',
+              width: '200px',
+              height: '400px',
+              background: '#ccc'
+            }"
           />
-        </div>
+        </aside>
 
-        <div class="w-full md:w-[580px] mx-auto">
-          <p class="mb-3 ml-1 font-normal text-left text-sm md:text-base">
-            {{ $t('form_label') }}
-          </p>
-
-          <el-form @submit="searchMovies" @submit.prevent>
-            <div class="w-full flex items-center justify-between">
-              <el-input
-                v-model="searchText"
-                :placeholder="`Ex: ${$t('form_placeholder')}`"
-                style="
-                  --el-input-focus-border-color: #cc6c4a;
-                  --el-input-border-radius: 6px;
-                "
-              />
-
-              <el-button
-                :icon="Search"
-                :type="
-                  $colorMode.preference === 'light' ? 'success' : 'primary'
-                "
-                circle
-                size="large"
-                class="ml-4"
-                @click="searchMovies"
+        <section
+          :class="`w-full lg:w-2/4 px-10 lg:px-0 flex items-center ${
+            moviesResult.items.length === 0 ? 'h-screen' : ''
+          }`"
+        >
+          <div class="w-full flex-1">
+            <div class="flex items-center justify-center mr-10 mb-14">
+              <img
+                class="w-[300px] lg:w-[400px]"
+                src="~/public/img/conta-o-final-logo.png"
+                alt="pt-BR"
               />
             </div>
-          </el-form>
-        </div>
+
+            <div class="w-full lg:w-[580px] mx-auto">
+              <p class="mb-3 ml-1 font-normal text-left text-sm md:text-base">
+                {{ $t('form_label') }}
+              </p>
+
+              <el-form @submit="searchMovies" @submit.prevent>
+                <div class="w-full flex items-center justify-between">
+                  <el-input
+                    v-model="searchText"
+                    :placeholder="`Ex: ${$t('form_placeholder')}`"
+                    style="
+                      --el-input-focus-border-color: #cc6c4a;
+                      --el-input-border-radius: 6px;
+                    "
+                  />
+
+                  <el-button
+                    :icon="Search"
+                    :type="
+                      $colorMode.preference === 'light' ? 'success' : 'primary'
+                    "
+                    circle
+                    size="large"
+                    class="ml-4"
+                    @click="searchMovies"
+                  />
+                </div>
+              </el-form>
+            </div>
+
+            <div
+              :class="`${
+                moviesResult.items.length !== 0 ? 'content-loaded' : ''
+              } content-cards w-full mt-10`"
+            >
+              <el-alert
+                v-if="errorAlert"
+                title="diga o nome do filme, irmão"
+                type="error"
+              />
+
+              <CardsMoviesComponents
+                v-model:movies="moviesResult.items"
+                v-model:loading="loadCards"
+                @select-movie-and-get-spoiler="selectMovieAndGetSpoiler"
+              />
+            </div>
+          </div>
+        </section>
+
+        <aside class="hidden lg:w-1/4 lg:flex items-start justify-end">
+          <adsbygoogle
+            ad-slot="5753726539"
+            :ad-style="{
+              display: 'inline-block',
+              width: '200px',
+              height: '400px',
+              background: '#ccc'
+            }"
+          />
+        </aside>
       </div>
-    </div>
-
-    <div
-      :class="`${
-        moviesResult.items.length !== 0 ? 'content-loaded' : ''
-      } content-cards px-10 md:px-0 w-full md:w-[1024px] mx-auto`"
-    >
-      <el-alert
-        v-if="errorAlert"
-        title="diga o nome do filme, irmão"
-        type="error"
-      />
-
-      <CardsMoviesComponents
-        v-model:movies="moviesResult.items"
-        v-model:loading="loadCards"
-        @select-movie-and-get-spoiler="selectMovieAndGetSpoiler"
-      />
     </div>
 
     <el-backtop
@@ -276,25 +308,23 @@ export default {
 
 <style lang="css">
 .home-start {
-  min-height: 100vh;
   transition: min-height 0.4s ease;
 }
 
 .home-start.content-loaded {
   min-height: 380px;
   padding-top: 100px;
-  margin-bottom: 3rem;
+  padding-bottom: 10rem;
 }
 
 .content-cards {
   height: 0;
-  overflow: hidden;
   transition: height 0.6s ease;
 }
 
 .content-cards.content-loaded {
   height: auto;
-  overflow: auto;
+  overflow: unset;
 }
 
 :root {

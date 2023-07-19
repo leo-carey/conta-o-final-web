@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5 pb-10">
+  <div class="w-full mt-5 pb-10">
     <div
       v-if="movies.length !== 0"
       class="text-sm font-semibold tracking-wide uppercase text-center mb-10"
@@ -9,7 +9,7 @@
 
     <el-skeleton style="width: 100%" :loading="loading" animated>
       <template #template>
-        <div class="grid grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <div v-for="(_items, itemIndex) in 4" :key="itemIndex">
             <el-skeleton-item
               variant="image"
@@ -37,7 +37,7 @@
       </template>
 
       <template #default>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <div
             v-for="(movie, movieKey) in movies"
             :key="movieKey"
@@ -56,7 +56,6 @@
             <el-card
               :body-style="{
                 padding: '0px',
-                overflow: 'hidden',
                 borderColor: '#000000da'
               }"
             >

@@ -10,8 +10,15 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@element-plus/nuxt',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/google-adsense'
   ],
+
+  // GOOGLE ADSENSE
+  'google-adsense': {
+    id: process.env.GOOGLE_ADSENSE_ID,
+    test: process.env.GOOGLE_ADSENSE_TEST_MODE === 'true'
+  },
 
   colorMode: {
     classSuffix: ''

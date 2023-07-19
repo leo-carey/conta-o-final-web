@@ -8,11 +8,25 @@
     </Head>
     <Body>
       <div
-        class="min-h-screen text-[#6F5643] bg-[#ECE7C2] dark:text-slate-300 dark:bg-gray-800 top-0"
+        class="text-[#6F5643] bg-[#ECE7C2] dark:text-slate-300 dark:bg-gray-800 top-0"
       >
         <HeaderComponent />
 
         <slot />
+
+        <section
+          class="w-full fixed bottom-0 mx-auto text-center overflow-hidden"
+        >
+          <adsbygoogle
+            ad-slot="8790953411"
+            :ad-style="{
+              display: 'inline-block',
+              width: '728px',
+              height: '90px',
+              background: '#ccc'
+            }"
+          />
+        </section>
       </div>
     </Body>
   </Html>
