@@ -14,10 +14,10 @@ export default defineNuxtConfig({
     '@nuxtjs/google-adsense'
   ],
 
-  // GOOGLE ADSENSE
+  // Google AdSense
   'google-adsense': {
     id: process.env.GOOGLE_ADSENSE_ID,
-    test: process.env.GOOGLE_ADSENSE_TEST_MODE === 'true'
+    test: false // process.env.NODE_ENV !== 'production'
   },
 
   colorMode: {
@@ -45,7 +45,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      API_BASE_URL: process.env.API_BASE_URL
+      API_BASE_URL: process.env.API_BASE_URL,
+      google_analytics_id: process.env.GOOGLE_ANALYTICS,
+      production_mode: process.env.NODE_ENV === 'production'
     }
   }
 })
