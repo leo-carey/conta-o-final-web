@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   // Google AdSense
   'google-adsense': {
     id: process.env.GOOGLE_ADSENSE_ID,
-    test: false // process.env.NODE_ENV !== 'production'
+    test: process.env.NODE_ENV !== 'production'
   },
 
   colorMode: {
