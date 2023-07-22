@@ -9,7 +9,7 @@ class SpeechService {
       speech.text = text
       speech.lang = 'pt-BR' // language.replace('_', '-')
       speech.pitch = 0.6
-      speech.rate = 2
+      speech.rate = 1.3
 
       SpeechService.stopTalk()
 

@@ -1,7 +1,7 @@
 <template>
   <header class="w-full absolute top-0">
     <div class="w-full px-6 md:px-8">
-      <Lazydiv v-if="!loading" class="w-full flex items-center justify-between">
+      <div v-if="!loading" class="w-full flex items-center justify-between">
         <div>
           <p class="text-left text-sm mb-2 mt-2 w-[250px] lg:w-auto">
             {{ $t('header_left') }}
@@ -42,7 +42,7 @@
 
           <LazyLanguageComponent v-if="!loading" />
         </div>
-      </Lazydiv>
+      </div>
     </div>
   </header>
 </template>
