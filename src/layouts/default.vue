@@ -8,7 +8,7 @@
     </Head>
     <Body>
       <div
-        class="text-cof-secondary-200 bg-cof-secondary-100 dark:text-slate-300 dark:bg-gray-800 top-0"
+        class="selection:bg-cof-cyan-100 selection:text-slate-700 text-cof-secondary-200 bg-cof-secondary-100 dark:text-slate-300 dark:bg-gray-800 top-0"
       >
         <LazyHeaderComponent />
 

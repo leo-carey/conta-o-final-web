@@ -17,6 +17,10 @@ export default <Partial<Config>>{
       'cof-secondary': {
         100: '#ECE7C2',
         200: '#6F5643'
+      },
+      'cof-cyan': {
+        100: '#73bda8',
+        200: '#61a08e'
       }
     }
   },
