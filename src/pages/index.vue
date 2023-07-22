@@ -11,7 +11,7 @@
     >
       <div class="w-full flex items-center justify-between">
         <aside class="hidden lg:w-1/4 lg:flex items-start justify-start">
-          <!-- <adsbygoogle
+          <adsbygoogle
             ad-slot="9738307227"
             :ad-style="{
               display: 'block',
@@ -19,7 +19,7 @@
               height: '400px',
               background: '#ccc'
             }"
-          /> -->
+          />
         </aside>
 
         <section
@@ -65,7 +65,7 @@
         </section>
 
         <aside class="hidden lg:w-1/4 lg:flex items-start justify-end">
-          <!-- <adsbygoogle
+          <adsbygoogle
             ad-slot="5753726539"
             :ad-style="{
               display: 'inline-block',
@@ -73,7 +73,7 @@
               height: '400px',
               background: '#ccc'
             }"
-          /> -->
+          />
         </aside>
       </div>
     </div>
@@ -93,87 +93,73 @@
   </section>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { ItemResponseWhatsMovie } from '@/interfaces/ResponseWhatsMovie'
+import {
+  ItemResponseWhatsMovie,
+  ResponseWhatsMovie
+} from '@/interfaces/ResponseWhatsMovie'
 import CardsMoviesComponents from '@/components/CardsMoviesComponents.vue'
 
 import { ApiService } from '@/services'
 
-export default {
-  components: {
-    CardsMoviesComponents
-  },
-  setup() {
-    const { locale } = useI18n()
-    const runtimeConfig = useRuntimeConfig()
-    const apiUrl = runtimeConfig.public.API_BASE_URL as string
+const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const apiUrl = runtimeConfig.public.API_BASE_URL as string
 
-    const selectedMovie: ItemResponseWhatsMovie = {
-      id: 0,
-      title: '',
-      description: '',
-      poster: '',
-      poster2: ''
+const selectedMovie = ref<ItemResponseWhatsMovie>({
+  id: 0,
+  title: '',
+  description: '',
+  poster: '',
+  poster2: ''
+})
+
+const moviesResult = ref<ResponseWhatsMovie>({
+  success: true,
+  currentPage: 1,
+  items: [],
+  pages: 0,
+  totalResults: 0
+})
+
+const errorAlert = ref(false)
+const loading = ref(true)
+const loadCards = ref(false)
+const spoiler = ref('')
+const showSpoiler = ref(false)
+
+onMounted(() => {
+  loading.value = false
+  window.speechSynthesis.getVoices()
+})
+
+// Methods
+const selectMovieAndGetSpoiler = async (movie: ItemResponseWhatsMovie) => {
+  loading.value = true
+  selectedMovie.value = movie
+
+  try {
+    const { data } = await ApiService.getSpoiler(apiUrl, locale.value, movie)
+
+    spoiler.value = data.spoilerText
+
+    moviesResult.value = {
+      success: true,
+      currentPage: 1,
+      items: [],
+      pages: 0,
+      totalResults: 0
     }
 
-    return {
-      apiUrl,
-      locale,
-      selectedMovie
-    }
-  },
-  data() {
-    return {
-      moviesResult: {
-        success: true,
-        currentPage: 1,
-        items: [],
-        pages: 0,
-        totalResults: 0
-      },
-      errorAlert: false,
-      loading: true,
-      loadCards: false,
-      spoiler: '',
-      showSpoiler: false
-    }
-  },
-  mounted() {
-    this.loading = false
-    window.speechSynthesis.getVoices()
-  },
-  methods: {
-    async selectMovieAndGetSpoiler(movie: ItemResponseWhatsMovie) {
-      this.loading = true
-      this.selectedMovie = movie
-
-      try {
-        const { data } = await ApiService.getSpoiler(
-          this.apiUrl,
-          this.locale,
-          movie
-        )
-
-        this.spoiler = data.spoilerText
-
-        this.moviesResult = {
-          success: true,
-          currentPage: 1,
-          items: [],
-          pages: 0,
-          totalResults: 0
-        }
-
-        this.showSpoiler = true
-      } catch (err: any) {
-        console.error('Ocorreu um erro com a requisição da Api: ', err)
-      }
-
-      this.loading = false
-    }
+    showSpoiler.value = true
+  } catch (err: any) {
+    console.error('Ocorreu um erro com a requisição da Api: ', err)
   }
+
+  loading.value = false
 }
 </script>
 

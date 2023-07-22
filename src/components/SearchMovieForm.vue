@@ -70,7 +70,7 @@ const emit = defineEmits([
 ])
 
 const searchMovies = async () => {
-  if (searchText.value.length <= 3) return
+  if (searchText.value.length < 3) return
 
   emit('update:loading', true)
   emit('update:loadCards', true)

@@ -17,7 +17,7 @@
         <section
           class="w-full fixed bottom-0 mx-auto text-center overflow-hidden"
         >
-          <!-- <adsbygoogle
+          <adsbygoogle
             ad-slot="8790953411"
             :ad-style="{
               display: 'inline-block',
@@ -25,7 +25,7 @@
               height: '90px',
               background: '#ccc'
             }"
-          /> -->
+          />
         </section>
       </div>
     </Body>

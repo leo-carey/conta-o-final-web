@@ -1,7 +1,7 @@
 <template>
   <client-only>
     <ElDialog
-      v-model="dialogVisible"
+      v-model="showSpoiler"
       :show-close="false"
       class="dialog-spoiler"
       append-to-body
@@ -55,7 +55,6 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
   CircleCloseFilled,
@@ -63,46 +62,39 @@ import {
   RefreshRight
 } from '@element-plus/icons-vue'
 
-import { ItemResponseWhatsMovie } from '@/interfaces/ResponseWhatsMovie'
 import { SpeechService } from '@/services'
 
-const props = defineProps({
-  spoiler: {
-    type: String,
-    default: ''
-  },
-  showSpoiler: {
-    type: Boolean,
-    default: false
-  },
-  selectedMovie: {
-    type: Object as PropType<ItemResponseWhatsMovie>,
-    default: {
-      id: 0,
-      title: '',
-      description: '',
-      poster: '',
-      poster2: ''
-    } as ItemResponseWhatsMovie
-  }
-})
+const props = defineProps(['spoiler', 'showSpoiler', 'selectedMovie'])
 
-const emit = defineEmits(['update:showSpoiler', 'reloadSpoiler'])
-
-// Show or not dialog
-const dialogVisible = ref(false)
+const spoiler = ref(props.spoiler)
+const showSpoiler = ref(props.showSpoiler)
+const selectedMovie = ref(props.selectedMovie)
 
 watch(
   () => props.showSpoiler,
-  (isVisible) => {
-    dialogVisible.value = isVisible
+  (newVisibility) => {
+    showSpoiler.value = newVisibility
   }
 )
+watch(
+  () => props.spoiler,
+  (newSpoiler) => {
+    spoiler.value = newSpoiler
+  }
+)
+watch(
+  () => props.selectedMovie,
+  (newMovie) => {
+    selectedMovie.value = newMovie
+  }
+)
+
+const emit = defineEmits(['update:showSpoiler', 'reloadSpoiler'])
 
 // Methods
 const hearSpoiler = async () => {
   try {
-    await SpeechService.talk(props.spoiler) //, this.locale
+    await SpeechService.talk(spoiler.value) //, this.locale
   } catch (error: any) {
     console.error('Houve algum erro: ', error)
 
@@ -116,14 +108,11 @@ const hearSpoiler = async () => {
 
 const stopSpoiler = () => {
   SpeechService.stopTalk()
-  emit('update:showSpoiler', !dialogVisible.value)
+  emit('update:showSpoiler', !showSpoiler.value)
 }
 </script>
 
 <style lang="css">
-/**
- * DIALOG
- */
 .dialog-spoiler {
   @apply bg-slate-800 text-white;
 }
