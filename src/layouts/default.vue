@@ -8,7 +8,7 @@
     </Head>
     <Body>
       <div
-        class="text-[#6F5643] bg-[#ECE7C2] dark:text-slate-300 dark:bg-gray-800 top-0"
+        class="text-cof-secondary-200 bg-cof-secondary-100 dark:text-slate-300 dark:bg-gray-800 top-0"
       >
         <HeaderComponent />
 
@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import HeaderComponent from '@/components/base/HeaderComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue'
 
 const { t } = useI18n()
 const title = computed(() => t('layouts_title'))
@@ -44,9 +44,15 @@ const title = computed(() => t('layouts_title'))
 <style lang="css">
 html,
 body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
   margin: 0;
   top: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  /* Borders */
+  --el-border-color-light: #222;
+  --el-card-bg-color: #222;
 }
 </style>

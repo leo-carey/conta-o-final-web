@@ -1,9 +1,9 @@
 <template>
   <header class="w-full absolute top-0">
     <div class="w-full px-6 md:px-8">
-      <div v-if="!loading" class="w-full flex items-center justify-between">
+      <Lazydiv v-if="!loading" class="w-full flex items-center justify-between">
         <div>
-          <p class="text-left text-sm mb-2 mt-2 w-[250px] w-auto">
+          <p class="text-left text-sm mb-2 mt-2 w-[250px] lg:w-auto">
             {{ $t('header_left') }}
           </p>
 
@@ -38,33 +38,21 @@
         </div>
 
         <div class="flex justify-between items-center">
-          <SwitcherThemeComponent />
+          <LazySwitcherThemeComponent v-if="!loading" />
 
-          <LanguageComponent />
+          <LazyLanguageComponent v-if="!loading" />
         </div>
-      </div>
+      </Lazydiv>
     </div>
   </header>
 </template>
 
-<script lang="ts">
-import LanguageComponent from '@/components/base/LanguageComponent.vue'
-import SwitcherThemeComponent from '@/components/base/SwitcherThemeComponent.vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 
-export default {
-  components: {
-    LanguageComponent,
-    SwitcherThemeComponent
-  },
-  data() {
-    return {
-      loading: true
-    }
-  },
-  mounted() {
-    this.loading = false
-  }
-}
+const loading = ref(true)
+
+onMounted(() => {
+  loading.value = false
+})
 </script>
-
-<style scoped></style>

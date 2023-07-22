@@ -1,8 +1,8 @@
 <template>
   <div class="mt-3 ml-6">
-    <el-dropdown trigger="click" @command="handleDropdown">
-      <span class="el-dropdown-link text-5xl dark:text-slate-300">
-        <el-icon>
+    <ElDropdown trigger="click" @command="handleDropdown">
+      <span class="text-5xl dark:text-slate-300">
+        <ElIcon>
           <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
             <rect fill="#f1f3f4" height="30" rx="4" width="24" x="8" y="8" />
             <path
@@ -47,32 +47,29 @@
               fill="#f1f3f4"
             />
           </svg>
-        </el-icon>
+        </ElIcon>
       </span>
 
       <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item
-            command="pt_BR"
-            :disabled="$i18n.locale === 'pt_BR'"
-          >
+        <ElDropdownMenu>
+          <ElDropdownItem command="pt_BR" :disabled="$i18n.locale === 'pt_BR'">
             <img src="~/public/img/flag-pt-BR.png" alt="pt-BR" class="mr-2" />
             Português(Brasil)
-          </el-dropdown-item>
+          </ElDropdownItem>
 
-          <el-dropdown-item command="en" :disabled="$i18n.locale === 'en'">
+          <ElDropdownItem command="en" :disabled="$i18n.locale === 'en'">
             <img src="~/public/img/flag-en.png" alt="en" class="mr-2" /> English
-          </el-dropdown-item>
-        </el-dropdown-menu>
+          </ElDropdownItem>
+        </ElDropdownMenu>
       </template>
-    </el-dropdown>
+    </ElDropdown>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-const { locale } = useI18n()
 
+const { locale } = useI18n()
 const cookieLang = useCookie('lang')
 
 const handleDropdown = (language: string) => {
@@ -80,8 +77,3 @@ const handleDropdown = (language: string) => {
   cookieLang.value = language
 }
 </script>
-
-<style scoped>
-.languages {
-}
-</style>

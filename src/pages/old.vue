@@ -11,7 +11,7 @@
     >
       <div class="w-full flex items-center justify-between">
         <aside class="hidden lg:w-1/4 lg:flex items-start justify-start">
-          <!-- <adsbygoogle
+          <adsbygoogle
             ad-slot="9738307227"
             :ad-style="{
               display: 'block',
@@ -19,7 +19,7 @@
               height: '400px',
               background: '#ccc'
             }"
-          /> -->
+          />
         </aside>
 
         <section
@@ -87,7 +87,7 @@
         </section>
 
         <aside class="hidden lg:w-1/4 lg:flex items-start justify-end">
-          <!-- <adsbygoogle
+          <adsbygoogle
             ad-slot="5753726539"
             :ad-style="{
               display: 'inline-block',
@@ -95,7 +95,7 @@
               height: '400px',
               background: '#ccc'
             }"
-          /> -->
+          />
         </aside>
       </div>
     </div>

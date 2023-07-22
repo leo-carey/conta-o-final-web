@@ -41,11 +41,11 @@
           <div
             v-for="(movie, movieKey) in movies"
             :key="movieKey"
-            class="card-wrapper relative cursor-pointer"
+            class="group relative cursor-pointer"
             @click="$emit('selectMovieAndGetSpoiler', movie)"
           >
             <div
-              class="arrow-this block absolute -top-4 -left-4 opacity-0 transition-opacity delay-100 ease-linear z-[90]"
+              class="group-hover:opacity-100 arrow-this block absolute -top-4 -left-4 opacity-0 transition-opacity delay-100 ease-linear z-[90]"
             >
               <img
                 src="~/public/img/seta95.png"
@@ -68,7 +68,9 @@
                 >
               </div>
 
-              <div class="image-banner">
+              <div
+                class="group-hover:after:opacity-40 after:content-'' after:w-full after:h-full after:top-0 after:left-0 after:block after:absolute after:opacity-0 after:bg-black after:transition-opacity after:delay-100 after:ease-linear after:z-[80]"
+              >
                 <img :src="movie.poster" class="w-full block" />
               </div>
             </el-card>
@@ -79,40 +81,19 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ItemResponseWhatsMovie } from '@/interfaces/ResponseWhatsMovie'
 
-export default {
-  props: {
-    movies: {
-      type: Array<ItemResponseWhatsMovie>,
-      default: []
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    }
+defineProps({
+  movies: {
+    type: Array<ItemResponseWhatsMovie>,
+    default: []
   },
-  emits: ['selectMovieAndGetSpoiler']
-}
+  loading: {
+    type: Boolean,
+    default: false
+  }
+})
+
+defineEmits(['selectMovieAndGetSpoiler'])
 </script>
-
-<style lang="css">
-.card-wrapper:hover .arrow-this {
-  @apply opacity-100;
-}
-
-.image-banner:after {
-  content: '';
-  @apply w-full h-full top-0 left-0 block absolute opacity-0 bg-black transition-opacity delay-100 ease-linear z-[80];
-}
-
-.card-wrapper:hover .image-banner:after {
-  @apply opacity-40;
-}
-
-:root {
-  --el-border-color-light: #222;
-  --el-card-bg-color: #222;
-}
-</style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-switch
+    <ElSwitch
       v-model="colorMode.preference"
       active-value="light"
       inactive-value="dark"
