@@ -7,17 +7,17 @@
       <h2>{{ $t('cards_title') }}</h2>
     </div>
 
-    <el-skeleton style="width: 100%" :loading="loading" animated>
+    <ElSkeleton style="width: 100%" :loading="loading" animated>
       <template #template>
         <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <div v-for="(_items, itemIndex) in 4" :key="itemIndex">
-            <el-skeleton-item
+            <ElSkeletonItem
               variant="image"
               style="width: 230px; height: 250px"
             />
 
             <div style="padding: 14px">
-              <el-skeleton-item variant="h3" style="width: 50%" />
+              <ElSkeletonItem variant="h3" style="width: 50%" />
 
               <div
                 style="
@@ -28,8 +28,8 @@
                   height: 16px;
                 "
               >
-                <el-skeleton-item variant="text" style="margin-right: 16px" />
-                <el-skeleton-item variant="text" style="width: 30%" />
+                <ElSkeletonItem variant="text" style="margin-right: 16px" />
+                <ElSkeletonItem variant="text" style="width: 30%" />
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
               />
             </div>
 
-            <el-card
+            <ElCard
               :body-style="{
                 padding: '0px',
                 borderColor: '#000000da'
@@ -73,11 +73,11 @@
               >
                 <img :src="movie.poster" class="w-full block" />
               </div>
-            </el-card>
+            </ElCard>
           </div>
         </div>
       </template>
-    </el-skeleton>
+    </ElSkeleton>
   </div>
 </template>
 

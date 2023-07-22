@@ -10,7 +10,7 @@
       <div
         class="text-cof-secondary-200 bg-cof-secondary-100 dark:text-slate-300 dark:bg-gray-800 top-0"
       >
-        <HeaderComponent />
+        <LazyHeaderComponent />
 
         <slot />
 
@@ -32,7 +32,7 @@
   </Html>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

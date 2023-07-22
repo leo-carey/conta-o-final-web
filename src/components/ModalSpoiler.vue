@@ -22,9 +22,9 @@
               style="color: #1e293b"
               @click="$emit('reloadSpoiler', selectedMovie)"
             >
-              <el-icon class="el-icon--left" style="color: #1e293b"
+              <ElIcon class="el-icon--left" style="color: #1e293b"
                 ><RefreshRight
-              /></el-icon>
+              /></ElIcon>
               {{ $t('spoiler_more_options') }}
             </ElButton>
 
@@ -64,6 +64,7 @@ import {
 
 import { SpeechService } from '@/services'
 
+// eslint-disable-next-line vue/require-prop-types
 const props = defineProps(['spoiler', 'showSpoiler', 'selectedMovie'])
 
 const spoiler = ref(props.spoiler)

@@ -37,7 +37,7 @@
             </div>
 
             <div class="w-full lg:w-[580px] mx-auto">
-              <SearchMovieForm
+              <LazySearchMovieForm
                 v-model:loading="loading"
                 v-model:load-cards="loadCards"
                 v-model:movies-result="moviesResult"
@@ -49,13 +49,13 @@
                 moviesResult.items.length !== 0 ? 'content-loaded' : ''
               } content-cards w-full mt-10`"
             >
-              <el-alert
+              <ElAlert
                 v-if="errorAlert"
                 title="diga o nome do filme, irmão"
                 type="error"
               />
 
-              <CardsMoviesComponents
+              <LazyCardsMoviesComponents
                 v-model:movies="moviesResult.items"
                 v-model:loading="loadCards"
                 @select-movie-and-get-spoiler="selectMovieAndGetSpoiler"
@@ -78,13 +78,13 @@
       </div>
     </div>
 
-    <el-backtop
+    <ElBacktop
       :right="100"
       :bottom="100"
       class="!bg-[#cc6c4a] hover:!bg-[#b35f40] !text-white"
     />
 
-    <ModalSpoiler
+    <LazyModalSpoiler
       v-model:show-spoiler="showSpoiler"
       :spoiler="spoiler"
       :selected-movie="selectedMovie"
@@ -101,7 +101,6 @@ import {
   ItemResponseWhatsMovie,
   ResponseWhatsMovie
 } from '@/interfaces/ResponseWhatsMovie'
-import CardsMoviesComponents from '@/components/CardsMoviesComponents.vue'
 
 import { ApiService } from '@/services'
 

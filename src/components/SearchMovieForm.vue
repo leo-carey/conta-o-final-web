@@ -4,9 +4,9 @@
       {{ $t('form_label') }}
     </p>
 
-    <el-form @submit="searchMovies" @submit.prevent>
+    <ElForm @submit="searchMovies" @submit.prevent>
       <div class="w-full flex items-center justify-between">
-        <el-input
+        <ElInput
           v-model="searchText"
           :placeholder="`Ex: ${$t('form_placeholder')}`"
           style="
@@ -15,7 +15,7 @@
           "
         />
 
-        <el-button
+        <ElButton
           :icon="Search"
           :type="$colorMode.preference === 'light' ? 'success' : 'primary'"
           circle
@@ -24,7 +24,7 @@
           @click="searchMovies"
         />
       </div>
-    </el-form>
+    </ElForm>
   </div>
 </template>
 
