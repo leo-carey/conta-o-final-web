@@ -1,12 +1,12 @@
 {
-  "name": "conte-o-final-web",
+  "name": "conta-o-final-web",
   "author": "Leonardo Carey",
   "description": "Site pra quem não tem tempo e nem saco de assistir Netflix e quer saber o final dos filmes.",
   "version": "0.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:leoncarey/conte-o-final-web.git"
+    "url": "git@github.com:leoncarey/conta-o-final-web.git"
   },
   "scripts": {
     "build": "nuxt build",
