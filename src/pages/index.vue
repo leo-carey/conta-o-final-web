@@ -78,11 +78,7 @@
       </div>
     </div>
 
-    <ElBacktop
-      :right="100"
-      :bottom="100"
-      class="!bg-[#cc6c4a] hover:!bg-[#b35f40] !text-white"
-    />
+    <ElBacktop :right="100" :bottom="100" />
 
     <LazyModalSpoiler
       v-model:show-spoiler="showSpoiler"

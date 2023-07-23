@@ -54,22 +54,22 @@ body {
   --el-card-bg-color: #222;
 
   /* EL Color Primary */
-  --el-color-primary: #cc6c4a;
+  /* --el-color-primary: #cc6c4a;
   --el-button-hover-border-color: #ad5c3f;
   --el-button-hover-bg-color: #ad5c3f;
   --el-color-primary-light-5: #ad5c3f;
   --el-color-primary-light-3: #ad5c3f;
   --el-color-primary-light-3: #ad5c3f;
-  --el-color-primary-dark-2: #ad5c3f;
+  --el-color-primary-dark-2: #ad5c3f; */
 
   /* EL Color Success */
-  --el-color-success: #73bda8;
+  /* --el-color-success: #73bda8;
   --el-color-success-light-5: #61a08e;
   --el-color-success-light-5: #61a08e;
   --el-color-success-light-3: #61a08e;
   --el-color-success-light-3: #61a08e;
   --el-color-success-light-3: #61a08e;
   --el-color-success-light-3: #61a08e;
-  --el-color-success-dark-2: #61a08e;
+  --el-color-success-dark-2: #61a08e; */
 }
 </style>
