@@ -22,8 +22,8 @@
             :ad-style="{
               display: 'inline-block',
               width: '728px',
-              height: '90px',
-              background: '#ccc'
+              height: '90px'
+              // background: '#ccc'
             }"
           />
         </section>

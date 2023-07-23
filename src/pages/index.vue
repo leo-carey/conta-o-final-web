@@ -16,8 +16,8 @@
             :ad-style="{
               display: 'block',
               width: '200px',
-              height: '400px',
-              background: '#ccc'
+              height: '400px'
+              // background: '#ccc'
             }"
           />
         </aside>
@@ -70,8 +70,8 @@
             :ad-style="{
               display: 'inline-block',
               width: '200px',
-              height: '400px',
-              background: '#ccc'
+              height: '400px'
+              // background: '#ccc'
             }"
           />
         </aside>
