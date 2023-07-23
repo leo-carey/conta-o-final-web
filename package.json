@@ -11,7 +11,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port=9000",
-    "start": "node .output/server/index.mjs",
+    "start-build": "node .output/server/index.mjs",
+    "start": "npx serve .output/public",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
