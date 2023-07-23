@@ -17,10 +17,10 @@
 
         <ElButton
           :icon="Search"
-          :type="$colorMode.preference === 'light' ? 'success' : 'primary'"
+          type="primary"
           circle
           size="large"
-          class="ml-4"
+          class="ml-4 !bg-cof-primary-100 hover:!bg-cof-primary-200 !border-cof-primary-100"
           @click="searchMovies"
         />
       </div>

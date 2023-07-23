@@ -19,10 +19,11 @@
           <div>
             <ElButton
               type="info"
-              style="color: #1e293b"
+              class="!bg-zinc-400 hover:!bg-zinc-500 !border-zinc-400 hover:!border-zinc-500 !text-slate-900 hover:!text-slate-800"
               @click="$emit('reloadSpoiler', selectedMovie)"
             >
-              <ElIcon class="el-icon--left" style="color: #1e293b"
+              <ElIcon
+                class="el-icon--left !text-slate-900 hover:!text-slate-800"
                 ><RefreshRight
               /></ElIcon>
               {{ $t('spoiler_more_options') }}
@@ -30,17 +31,21 @@
 
             <ElButton
               type="success"
-              style="color: #1e293b"
+              class="!bg-cof-cyan-100 hover:!bg-cof-cyan-200 !border-cof-cyan-100 !text-slate-900"
               @click="hearSpoiler"
             >
-              <ElIcon class="el-icon--left" style="color: #1e293b"
+              <ElIcon class="el-icon--left !text-slate-900"
                 ><VideoPlay
               /></ElIcon>
               {{ $t('spoiler_hear_button') }}
             </ElButton>
 
-            <ElButton type="primary" style="color: #cbd5e1" @click="close">
-              <ElIcon class="el-icon--left" style="color: #cbd5e1"
+            <ElButton
+              type="primary"
+              class="!bg-cof-primary-100 hover:!bg-cof-primary-200 !border-cof-primary-100 !text-slate-100"
+              @click="close"
+            >
+              <ElIcon class="el-icon--left !text-slate-100"
                 ><CircleCloseFilled
               /></ElIcon>
               {{ $t('spoiler_close_button') }}

@@ -11,8 +11,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port=9000",
-    "start-build": "node .output/server/index.mjs",
-    "start": "npx serve .output/public",
+    "start": "node .output/server/index.mjs",
+    "start-gen": "npx serve .output/public",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -32,6 +32,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "autoprefixer": "^10.4.14",
+    "element-plus": "^2.3.8",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "5.0.0",
